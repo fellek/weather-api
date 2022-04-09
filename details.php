@@ -7,7 +7,7 @@ $stream = stream_context_create(array(
     'http' => array(
         'timeout' => 30     ) )     );
 
-$array = get_headers($url, 0, $stream);
+$array = get_headers($url, false);
 $string = $array[0];
 if(strpos($string,"200"))
 {

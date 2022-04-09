@@ -1,5 +1,5 @@
 <?php
-$ort = $_GET['o'];
+$ort = @$_GET['o'];
 $orte = [
     'goe' => ['51.54019','9.91399'],
     'gmp21' => ['52.45614','13.62766'],
@@ -33,7 +33,7 @@ $stream = stream_context_create(array(
     'http' => array(
         'timeout' => 30     ) )     );
 
-$array = get_headers($url, 0, $stream);
+$array = get_headers($url, false);
 $string = $array[0];
 if(strpos($string,"200"))
 {
@@ -49,7 +49,7 @@ else
 $file = file_get_contents($url);
 $json = json_decode($file, TRUE);
 
-if ($_GET['debug'] === "true") {
+if (@$_GET['debug'] === "true") {
     print_r($json);
     die();
 }
