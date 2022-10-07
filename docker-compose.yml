@@ -6,17 +6,17 @@ services:
       - ./:/var/www/html
     labels:
       - traefik.enable=true
-      - traefik.http.middlewares.wordpress-weather-https-redirect.redirectscheme.scheme=https
-      - traefik.http.middlewares.wordpress-weather-https-redirect.redirectscheme.permanent=true
-      - traefik.http.routers.wordpress-weather.middlewares=wordpress-weather-https-redirect
-      - traefik.http.routers.wordpress-weather.entrypoints=http
-      - traefik.http.routers.wordpress-weather.rule=Host(`weather.fellek.net`)
-      - traefik.http.services.wordpress-weather.loadbalancer.server.port=80
-      - traefik.http.routers.wordpress-weather-secure.entrypoints=https
-      - traefik.http.routers.wordpress-weather-secure.rule=Host(`weather.fellek.net`)
-      - traefik.http.routers.wordpress-weather-secure.tls=true
-      - traefik.http.routers.wordpress-weather-secure.tls.certresolver=dns
-      - traefik.http.routers.wordpress-weather-secure.service=weather-fellek
+      - traefik.http.middlewares.weather-https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.weather-https-redirect.redirectscheme.permanent=true
+      - traefik.http.routers.weather.middlewares=weather-https-redirect
+      - traefik.http.routers.weather.entrypoints=http
+      - traefik.http.routers.weather.rule=Host(`weather.fellek.net`)
+      - traefik.http.services.weather.loadbalancer.server.port=80
+      - traefik.http.routers.weather-secure.entrypoints=https
+      - traefik.http.routers.weather-secure.rule=Host(`weather.fellek.net`)
+      - traefik.http.routers.weather-secure.tls=true
+      - traefik.http.routers.weather-secure.tls.certresolver=dns
+      - traefik.http.routers.weather-secure.service=weather
       - traefik.docker.network=traefik-public
     networks:
       - traefik-public
