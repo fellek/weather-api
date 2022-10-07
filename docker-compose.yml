@@ -4,24 +4,22 @@ services:
     image: phpstorm/php-apache:7.4-xdebug2.9
     volumes:
       - ./:/var/www/html
-    ports:
-      - 88:80
-#    labels:
-#      - traefik.enable=true
-#      - traefik.http.middlewares.weather-https-redirect.redirectscheme.scheme=https
-#      - traefik.http.middlewares.weather-https-redirect.redirectscheme.permanent=true
-#      - traefik.http.routers.weather.middlewares=weather-https-redirect
-#      - traefik.http.routers.weather.entrypoints=http
-#      - traefik.http.routers.weather.rule=Host(`weather.fellek.net`)
-#      - traefik.http.services.weather.loadbalancer.server.port=80
-#      - traefik.http.routers.weather-secure.entrypoints=https
-#      - traefik.http.routers.weather-secure.rule=Host(`weather.fellek.net`)
-#      - traefik.http.routers.weather-secure.tls=true
-#      - traefik.http.routers.weather-secure.tls.certresolver=dns
-#      - traefik.http.routers.weather-secure.service=weather
-#      - traefik.docker.network=traefik-public
-#    networks:
-#      - traefik-public
-#networks:
-#  traefik-public:
-#    external: true
+    labels:
+      - traefik.enable=true
+      - traefik.http.middlewares.weather-https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.weather-https-redirect.redirectscheme.permanent=true
+      - traefik.http.routers.weather.middlewares=weather-https-redirect
+      - traefik.http.routers.weather.entrypoints=http
+      - traefik.http.routers.weather.rule=Host(`weather.fellek.net`)
+      - traefik.http.services.weather.loadbalancer.server.port=80
+      - traefik.http.routers.weather-secure.entrypoints=https
+      - traefik.http.routers.weather-secure.rule=Host(`weather.fellek.net`)
+      - traefik.http.routers.weather-secure.tls=true
+      - traefik.http.routers.weather-secure.tls.certresolver=dns
+      - traefik.http.routers.weather-secure.service=weather
+      - traefik.docker.network=traefik-public
+    networks:
+      - traefik-public
+networks:
+  traefik-public:
+    external: true
