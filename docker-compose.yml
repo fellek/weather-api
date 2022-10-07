@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   webserver:
     image: phpstorm/php-apache:7.4-xdebug2.9
