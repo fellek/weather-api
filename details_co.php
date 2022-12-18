@@ -122,3 +122,5 @@ unset($json['day1h']['prec']);
 
 
 //print_r($json);
+?>
+<a href="https://fellek.net/impressum">Impressum</a>
