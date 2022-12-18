@@ -1,12 +1,12 @@
 <?php
-$ort = $_GET['o'];
+$ort = @$_GET['o'];
 $orte = [
     'goe' => ['51.54019','9.91399'],
     'gmp21' => ['52.45614','13.62766'],
     'hoffeld' => ['49.08933','11.62474'],
-    'krachmacher' => ['48.99162','12.08217'],
-    'mc' => ['47.10206','7.26203'],
-    'hilde' => ['52.15314','9.94312'],
+    'krachmacher' => ['49.0','12.0'],
+    'rav' => ['47.7782704','9.6121303'],
+    'pass' => ['48.5667364','13.4319466'],
     'wingert' => ['49.29292','8.52277']
 ];
 
@@ -33,7 +33,7 @@ $stream = stream_context_create(array(
     'http' => array(
         'timeout' => 30     ) )     );
 
-$array = get_headers($url, 0, $stream);
+$array = get_headers($url, false);
 $string = $array[0];
 if(strpos($string,"200"))
 {
@@ -49,7 +49,7 @@ else
 $file = file_get_contents($url);
 $json = json_decode($file, TRUE);
 
-if ($_GET['debug'] === "true") {
+if (@$_GET['debug'] === "true") {
     print_r($json);
     die();
 }
