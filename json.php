@@ -54,7 +54,7 @@ foreach($json['days1h'] as $key => $day) {
     $j++;
    // echo "</tr>";
 }
-echo json_encode($strahlung);
+echo json_encode($json);
 //echo "</tr></table>";
 
 /**unset($json['day1h']['tair']);
