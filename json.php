@@ -26,8 +26,8 @@ $json = json_decode($file, TRUE);
 
 //echo "<table border='1' style='font-family: sans-serif;'><tr>";
 $i=0;
-$strahlung = array();
 foreach($json['days1h'] as $key => $day) {
+    $strahlung = array();
   //  echo "<tr>";
   //  echo "<td>";
     if ($i==0) {
