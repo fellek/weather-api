@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: application/json; charset=UTF-8");
 error_reporting(!E_ALL);
 $url = 'https://www.agrar.basf.de/api/weather/weatherDetails?latitude=49.29292&longitude=8.52277&lang=de';
 $stream = stream_context_create(array(
@@ -24,34 +25,23 @@ else
 $file = file_get_contents($url);
 $json = json_decode($file, TRUE);
 
-//echo "<table border='1' style='font-family: sans-serif;'><tr>";
 $i=0;
 $rjson=[];
 foreach($json['days1h'] as $key => $day) {
-  //  echo "<tr>";
-  //  echo "<td>";
     if ($i==0) {
         $wochentag = "Heute";
     } else {
         $wochentag = date ('l', time() + $i*3600);
     }
- //   echo "</td>";
     $j=0;
     $strahlung = array();
     foreach ($day['1h'] as $hour => $data) {
         if ($data['radwm2'] > 0 ) {
             $rjson[$wochentag]["stunde"][$hour] += $data['radwm2'];
         }
-   //     echo "<td width='150px'>";
-   //     echo $data['time'] . "<br>";
-   //     echo "Temperatur&nbsp;(min/max):&nbsp;" . $data['tair'] . "&nbsp;gef&uuml;hlt&nbsp;wie" . $data['tdew'] . "&nbsp;°C" . "<br>";
-   //     echo "Bew&ouml;lkung: " . $data['cloud'] . " h" . "<br>";
-   //     echo "Strahlung:    " . $data['radwm2'] . " W/m²" . "<br>";
-   //     echo "</td>";
         $i++;
     }
     $rjson[$wochentag]["average"] = array_sum($rjson[$wochentag]["stunde"])/count($rjson[$wochentag]["stunde"]);
-   // echo "</tr>";
 }
 echo json_encode($rjson);
 //echo "</tr></table>";

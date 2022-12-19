@@ -53,6 +53,30 @@ if (@$_GET['debug'] === "true") {
     print_r($json);
     die();
 }
+if(@$_GET['json'] == "true") {
+    header("Content-Type: application/json; charset=UTF-8");
+    $i=0;
+    $rjson=[];
+    foreach($json['days1h'] as $key => $day) {
+        if ($i==0) {
+            $wochentag = "Heute";
+        } else {
+            $wochentag = date ('l', time() + $i*3600);
+        }
+        $j=0;
+        $strahlung = array();
+        foreach ($day['1h'] as $hour => $data) {
+            if ($data['radwm2'] > 0 ) {
+                $rjson[$wochentag]["stunde"][$hour] += $data['radwm2'];
+            }
+            $i++;
+        }
+        $rjson[$wochentag]["average"] = array_sum($rjson[$wochentag]["stunde"])/count($rjson[$wochentag]["stunde"]);
+    }
+    echo json_encode($rjson);
+    die();
+}
+
 echo "<table border='1' style='font-family: sans-serif;'>
 <tr><td colspan='24'>Wetterprognose f&uuml;r $ort</td></tr>
 <tr>";
