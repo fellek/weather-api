@@ -50,7 +50,7 @@ if(@$_GET['json'] == "true") {
     $rjson=[];
     foreach($json['days1h'] as $key => $day) {
         if ($i==0) {
-            $wochentag = "Y-m-d";
+            $wochentag = date ('Y-m-d', time() + $i*3600);
         } else {
             $wochentag = date ('Y-m-d', time() + $i*3600);
         }
