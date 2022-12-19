@@ -1,4 +1,5 @@
 <?php
+error_reporting(!E_ALL);
 $ort = @$_GET['o'];
 $orte = [
     'goe' => ['51.54019','9.91399'],
