@@ -35,9 +35,10 @@ foreach($json['days1h'] as $key => $day) {
         echo date ('l', time() + $i*3600);
     }
  //   echo "</td>";
+    $j=0;
     foreach ($day['1h'] as $hour => $data) {
         if ($data['radwm2'] > 0 ) {
-            $strahlung[$i] += $data['radwm2'];
+            $strahlung[$j][$i] += $data['radwm2'];
         }
    //     echo "<td width='150px'>";
    //     echo $data['time'] . "<br>";
@@ -47,9 +48,11 @@ foreach($json['days1h'] as $key => $day) {
    //     echo "</td>";
         $i++;
     }
+    $strahlung[$j]["average"] = array_sum($strahlung[$j])/count($strahlung[$j]);
+    $j++;
    // echo "</tr>";
 }
-print_r($strahlung);
+echo json_encode($strahlung);
 //echo "</tr></table>";
 
 /**unset($json['day1h']['tair']);
