@@ -50,7 +50,7 @@ foreach($json['days1h'] as $key => $day) {
         $i++;
     }
     $json[$wochentag]["stunde"] = $strahlung;
-    $json[$wochentag]["average"] = array_sum($strahlung[$i])/count($strahlung[$i]);
+    $json[$wochentag]["average"] = array_sum($strahlung)/count($strahlung);
     $j++;
    // echo "</tr>";
 }
