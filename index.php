@@ -51,9 +51,9 @@ if(@$_GET['json'] == "true") {
     $rjson=[];
     foreach($json['days1h'] as $key => $day) {
         if ($i==0) {
-            $wochentag = date ("Y-m-d", time() + $i*3600);
+            $wochentag = "Heute";//date ("Y-m-d", time() + $i*3600);
         } else {
-            $wochentag = date ("Y-m-d", time() + $i*3600);
+            $wochentag = date ("l", time() + $i*3600);
         }
         $j=0;
         $strahlung = array();
