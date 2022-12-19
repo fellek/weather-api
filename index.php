@@ -52,7 +52,7 @@ if(@$_GET['json'] == "true") {
         if ($i==0) {
             $wochentag = "Heute";
         } else {
-            $wochentag = date ('l', time() + $i*3600);
+            $wochentag = date ('Y-m-d', time() + $i*3600);
         }
         $j=0;
         $strahlung = array();
