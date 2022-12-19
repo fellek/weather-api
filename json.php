@@ -49,12 +49,12 @@ foreach($json['days1h'] as $key => $day) {
    //     echo "</td>";
         $i++;
     }
-    $json[$wochentag]["stunde"] = $strahlung;
-    $json[$wochentag]["average"] = array_sum($strahlung)/count($strahlung);
+    $rjson[$wochentag]["stunde"] = $strahlung;
+    $rjson[$wochentag]["average"] = array_sum($strahlung)/count($strahlung);
     $j++;
    // echo "</tr>";
 }
-echo json_encode($json);
+echo json_encode($rjson);
 //echo "</tr></table>";
 
 /**unset($json['day1h']['tair']);
