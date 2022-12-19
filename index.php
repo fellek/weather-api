@@ -16,12 +16,6 @@ if (array_key_exists($ort, $orte)) {
     $geo = ['49.29292','8.52277'];
 }
 
-echo "<table><tr>";
-foreach ($orte as $key => $value) {
-    echo "<td><a href='?o=$key'>$key</a></td>";
-}
-echo "</tr></table>";
-
 $lat = $geo[0];
 $lon = $geo[1];
 
@@ -76,6 +70,12 @@ if(@$_GET['json'] == "true") {
     echo json_encode($rjson);
     die();
 }
+
+echo "<table><tr>";
+foreach ($orte as $key => $value) {
+    echo "<td><a href='?o=$key'>$key</a></td>";
+}
+echo "</tr></table>";
 
 echo "<table border='1' style='font-family: sans-serif;'>
 <tr><td colspan='24'>Wetterprognose f&uuml;r $ort</td></tr>
