@@ -26,6 +26,7 @@ $json = json_decode($file, TRUE);
 
 //echo "<table border='1' style='font-family: sans-serif;'><tr>";
 $i=0;
+$rjson=[];
 foreach($json['days1h'] as $key => $day) {
   //  echo "<tr>";
   //  echo "<td>";
@@ -39,7 +40,7 @@ foreach($json['days1h'] as $key => $day) {
     $strahlung = array();
     foreach ($day['1h'] as $hour => $data) {
         if ($data['radwm2'] > 0 ) {
-            $strahlung[$hour] += $data['radwm2'];
+            $rjson[$wochentag]["stunde"][$hour] += $data['radwm2'];
         }
    //     echo "<td width='150px'>";
    //     echo $data['time'] . "<br>";
@@ -49,8 +50,7 @@ foreach($json['days1h'] as $key => $day) {
    //     echo "</td>";
         $i++;
     }
-    $rjson[$wochentag]["stunde"] = $strahlung;
-    $rjson[$wochentag]["average"] = array_sum($strahlung)/count($strahlung);
+    $rjson[$wochentag]["average"] = array_sum($rjson[$wochentag]["stunde"])/count($rjson[$wochentag]["stunde"]);
    // echo "</tr>";
 }
 echo json_encode($rjson);
