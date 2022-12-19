@@ -1,4 +1,5 @@
 <?php
+error_reporting(!E_ALL);
 $url = 'https://www.agrar.basf.de/api/weather/weatherDetails?latitude=49.29292&longitude=8.52277&lang=de';
 $stream = stream_context_create(array(
     "ssl"=>array(
