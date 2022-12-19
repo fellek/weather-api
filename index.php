@@ -29,12 +29,9 @@ $stream = stream_context_create(array(
 
 $array = get_headers($url, false);
 $string = $array[0];
-if(strpos($string,"200"))
-{
+if(strpos($string,"200")) {
     //echo 'url exists  '.$url."\n<br>";
-}
-else
-{
+} else {
     echo 'url:  '.$url." does not exist \n<br>";
     return;
 }
